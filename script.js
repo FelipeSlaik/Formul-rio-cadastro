@@ -7,7 +7,14 @@ const erroName = document.getElementById("erro-nome");
 const minLength = 10;
 const maxLength = 30;
 
+const passwordInput = document.getElementById("password").value;
+const erroPassword = document.getElementById("erro-password");
+const confirmPassword = document.getElementById("confirm-password").value;
+const erroConfirmPassword = document.getElementById("erro-confirmacao");
+
+
 nameInput.addEventListener("keyup", function () {
+  //Validação Nome
   const nameValue = nameInput.value.trim();
 
   if (!nameValue){
@@ -20,32 +27,38 @@ nameInput.addEventListener("keyup", function () {
     erroName.textContent = "";
   }
 });
-
+ //Validação Email
 const emailValidate = (emailInput) => {
   const regex = /^[^\s]+@[^\s]+\.[^\s]+$/;
   return regex.test(emailInput);
 };
 
-//Submit
+//VALIDAÇÃO DE SENHA E CONFIRMAÇÃO DE SENHA
+
+
+
+
+//SUBMIT
 formSubmit.addEventListener("submit", function (e) {
   e.preventDefault();
 
-  const emailValue = emailInput.value;
+  const emailValue = emailInput.value.trim();
   const emailValid = emailValidate(emailValue);
-  const nameValue = nameInput.value.trim();
+  const nameValue = nameInput.value;
 
    let formValid = true;
 
     //EMAIL
-  if (!emailValid) {
+  if (!emailValue) {
     erroEmail.textContent = "O campo não pode ser vazio!";
     formValid = false;
-  } else if (!emailValue){
+  } else if (!emailValid){
     erroEmail.textContent = "E-mail inválido!";
     formValid = false;
   } else {
     erroEmail.textContent = "";
   }
+  
     //NAME
   if (!nameValue){
     erroName.textContent = "O campo não pode ser vazio!";
@@ -59,6 +72,10 @@ formSubmit.addEventListener("submit", function (e) {
     erroName.textContent = "";
   }
 
+  //PASSWORD
+
+  
+  
 
 
 
